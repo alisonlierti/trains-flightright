@@ -1,8 +1,8 @@
 module.exports = class Train {
-  constructor(percurso, name, amoutOfPeople, timeNeedInTheStation) {
-    this.percurso = percurso;
+  constructor(route, name, amoutOfPeople, timeNeedInTheStation) {
+    this.route = route;
     this.name = name;
     this.amoutOfPeople = amoutOfPeople;
     this.timeNeedInTheStation = timeNeedInTheStation;
   }
-}
+};

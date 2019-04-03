@@ -1,7 +1,7 @@
 const doTheTrainRoute = require('./doTheTrainRoute');
 
 module.exports =  async function forEachTrain(orderedTrains, spaceBeetwenTheStations, i, listOfEvents) {
-    promises = [];
+    let promises = [];
     for (let j = 0; j < orderedTrains.length; j++) {
 
         const train = orderedTrains[j];

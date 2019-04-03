@@ -17,12 +17,10 @@ module.exports = class Station {
         this.name
       }`;
       listOfEvents.push(event);
-      console.log(event);
       return { promise: promise.promise };
     } else {
       const event = `The train ${train.name} arrived at station ${this.name}`;
       listOfEvents.push(event);
-      console.log(event);
       if (promise) {
         promise.resolve();
       }
@@ -34,7 +32,6 @@ module.exports = class Station {
   departureTrainFromStation(train, listOfEvents) {
     const event = `The train ${train.name} departured the station ${this.name}`;
     listOfEvents.push(event);
-    console.log(event);
     this.awaitingTrainInTheStation = null;
     if (this.awaitingTrains && this.awaitingTrains.length) {
       const nextTrain = this.awaitingTrains.shift();

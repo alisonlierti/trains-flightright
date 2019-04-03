@@ -3,48 +3,13 @@ const Train = require('./entities/Train');;
 const Station = require('./entities/Station');
   
   
-  const spaceBeetwenTheStations = {
-      time: 2, // in seconds
-      space: 1 // in meters
+function getSpaceBeetwenTheStations() {
+  return {
+      time: 0.01, // in seconds
   };
+}
   
-  // name, awaitingTrainInTheStation, awaitingTrains
-  
-  const stationa = new Station("A", null, []);
-  const stationb = new Station("B", null, []);
-  const stationc = new Station("C", null, []);
-  
-  
-  // (route, name, amoutOfPeople, timeNeedInTheStation)
-  const trains =  [new Train(
-      [stationc, stationa, stationb],
-      "1",
-       100,
-       0.1 // in seconds
-  ),
-  new Train(
-      [stationa, stationc, stationb],
-      "3",
-       8,
-       0.1 // in seconds
-  ),
-  new Train(
-      [stationb, stationa, stationc],
-      "4",
-       200,
-       0.1 // in seconds
-  )];
-  
-startTheProcess(trains, spaceBeetwenTheStations, 1).then(data => {
-    console.log('---------------------')
-    console.log(firstTest);
-    console.log('---------------------')
-});
-
-
-
-
-  const station1a = new Station("1A", null, []);
+const station1a = new Station("1A", null, []);
   const station2a = new Station("2A", null, []);
   const station3ac = new Station("3AC", null, []);
   const station4a = new Station("4A", null, []);
@@ -62,7 +27,7 @@ startTheProcess(trains, spaceBeetwenTheStations, 1).then(data => {
   const station6c = new Station("4C", null, []);
 
 
-  const trainsForSecondTest =  [
+  const trains =  [
       new Train(
         [station1a,
             station2a,
@@ -73,7 +38,7 @@ startTheProcess(trains, spaceBeetwenTheStations, 1).then(data => {
             station7a],
         "1",
         300,
-        1 // in seconds
+        0.01 // in seconds
         ),
         new Train(
             [station1b,
@@ -84,7 +49,7 @@ startTheProcess(trains, spaceBeetwenTheStations, 1).then(data => {
                 station6b],
             "2",
             200,
-            1 // in seconds
+            0.01 // in seconds
         ),
         new Train(
             [station1c,
@@ -95,14 +60,24 @@ startTheProcess(trains, spaceBeetwenTheStations, 1).then(data => {
                 station6c],
             "3",
             100,
-            1 // in seconds
+            0.01 // in seconds
         )
     ];
-
-
-    startTheProcess(trainsForSecondTest, spaceBeetwenTheStations, 1).then(data => {
-        console.log(data);
+  
+  
+  test('amount of departured', () => {
+    return startTheProcess(trains, getSpaceBeetwenTheStations(), 1).then(data => {
+      data = data.filter(data => data.includes('departured'));
+      expect(data.length).toBe(38);
     });
+  });
 
 
+  test('amount of arrived', () => {
+    return startTheProcess(trains, getSpaceBeetwenTheStations(), 1).then(data => {
+      data = data.filter(data => data.includes('arrived'));
+
+      expect(data.length).toBe(38);
+    });
+  });
   

@@ -1,0 +1,17 @@
+{
+  "name": "trains",
+  "version": "1.0.0",
+  "description": "trains logic test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "alison lierti",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.0",
+    "jest": "^24.7.0"
+  }
+}
